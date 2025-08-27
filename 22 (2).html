@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIOXXIS GOAT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0a1a1a 0%, #0f2a2a 25%, #1a3a3a 50%, #0f2f2f 75%, #0a1f1f 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Animated Particle Background */
+        #particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: radial-gradient(circle, rgba(0, 255, 255, 0.8) 0%, rgba(0, 200, 200, 0.4) 50%, transparent 100%);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+            opacity: 0;
+        }
+
+        .particle.cyan {
+            background: radial-gradient(circle, rgba(0, 255, 255, 0.6) 0%, rgba(0, 200, 200, 0.3) 50%, transparent 100%);
+        }
+
+        .particle.pink {
+            background: radial-gradient(circle, rgba(251, 191, 36, 0.7) 0%, rgba(245, 158, 11, 0.4) 50%, transparent 100%);
+        }
+
+        .particle.green {
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.6) 0%, rgba(37, 99, 235, 0.3) 50%, transparent 100%);
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Floating Elements */
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-element {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: linear-gradient(45deg, #00ffff, #00cccc);
+            border-radius: 50%;
+            animation: floatUpDown var(--duration, 10s) ease-in-out infinite;
+            animation-delay: var(--delay, 0s);
+            opacity: 0.7;
+        }
+
+        .floating-element:nth-child(1) { left: 10%; top: 20%; }
+        .floating-element:nth-child(2) { left: 80%; top: 40%; }
+        .floating-element:nth-child(3) { left: 30%; top: 60%; }
+        .floating-element:nth-child(4) { left: 70%; top: 80%; }
+        .floating-element:nth-child(5) { left: 50%; top: 30%; }
+
+        @keyframes floatUpDown {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-20px) scale(1.2); }
+        }
+
+        /* Enhanced Background with Moving Gradients */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(0, 255, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 200, 200, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(0, 150, 150, 0.1) 0%, transparent 50%);
+            animation: gradientShift 20s ease-in-out infinite;
+            z-index: -2;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        /* Top Banner */
+        .top-banner {
+            background: linear-gradient(135deg, #00ffff, #00cccc, #008888, #006666);
+            background-size: 300% 300%;
+            text-align: center;
+            padding: 18px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            animation: sophisticatedGlow 4s ease-in-out infinite, gradientMove 8s ease-in-out infinite;
+            box-shadow: 0 4px 20px rgba(0, 255, 255, 0.3);
+        }
+
+        @keyframes sophisticatedGlow {
+            0% { box-shadow: 0 4px 20px rgba(0, 255, 255, 0.3); }
+            25% { box-shadow: 0 8px 40px rgba(0, 200, 200, 0.5), 0 0 60px rgba(0, 200, 200, 0.3); }
+            50% { box-shadow: 0 8px 40px rgba(0, 150, 150, 0.5), 0 0 60px rgba(0, 150, 150, 0.3); }
+            75% { box-shadow: 0 8px 40px rgba(0, 100, 100, 0.5), 0 0 60px rgba(0, 100, 100, 0.3); }
+            100% { box-shadow: 0 8px 40px rgba(0, 255, 255, 0.5), 0 0 60px rgba(0, 255, 255, 0.3); }
+        }
+
+        .top-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        /* Enhanced Navigation Menu */
+        .nav-menu {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(10, 26, 26, 0.95));
+            backdrop-filter: blur(25px);
+            border-bottom: 2px solid rgba(0, 255, 255, 0.3);
+            padding: 18px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.4),
+                0 0 0 1px rgba(0, 255, 255, 0.1);
+            animation: navGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes navGlow {
+            0% { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0, 255, 255, 0.1); }
+            100% { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0, 255, 255, 0.3); }
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-link {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 14px 22px;
+            border-radius: 30px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+            background: rgba(255, 255, 255, 0.05);
+            white-space: nowrap;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #ffffff;
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(0, 200, 200, 0.15));
+            border-color: rgba(0, 255, 255, 0.5);
+            box-shadow:
+                0 6px 20px rgba(0, 255, 255, 0.3),
+                0 0 30px rgba(0, 255, 255, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px) scale(1.05);
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .nav-link:hover::before {
+            left: 100%;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #00ffff, #00cccc);
+            transition: all 0.4s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 80%;
+        }
+
+        /* Responsive Navigation */
+        @media (max-width: 1024px) {
+            .nav-links {
+                gap: 20px;
+            }
+            
+            .nav-link {
+                font-size: 0.85rem;
+                padding: 12px 18px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                padding: 15px 0;
+            }
+            
+            .nav-links {
+                gap: 15px;
+            }
+            
+            .nav-link {
+                font-size: 0.8rem;
+                padding: 10px 15px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .nav-links {
+                gap: 8px;
+            }
+            
+            .nav-link {
+                font-size: 0.75rem;
+                padding: 8px 12px;
+                border-radius: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links {
+                gap: 5px;
+                justify-content: space-between;
+            }
+            
+            .nav-link {
+                font-size: 0.7rem;
+                padding: 6px 8px;
+                flex: 1;
+                text-align: center;
+                min-width: 0;
+            }
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 60px 20px;
+            background:
+                radial-gradient(circle at 30% 70%, rgba(0, 255, 255, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(0, 200, 200, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at center, rgba(0, 150, 150, 0.08) 0%, transparent 70%);
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.02) 50%, transparent 70%);
+            animation: headerShimmer 6s ease-in-out infinite;
+        }
+
+        @keyframes headerShimmer {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+        }
+
+        .header h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #00ffff, #00cccc, #008888, #006666, #00ffff);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 25px;
+            text-shadow: 0 0 40px rgba(0, 255, 255, 0.4);
+            letter-spacing: -1px;
+            animation: textGradientMove 6s ease-in-out infinite, sophisticatedTextGlow 3s ease-in-out infinite alternate;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes textGradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes sophisticatedTextGlow {
+            0% { filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.4)); }
+            100% { filter: drop-shadow(0 0 40px rgba(0, 200, 200, 0.6)); }
+        }
+
+        .header p {
+            font-size: 1.4rem;
+            color: #e2e8f0;
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Section Styling */
+        .section {
+            margin: 80px 0;
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 60px;
+            background: linear-gradient(135deg, #00ffff, #00cccc, #008888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            letter-spacing: -0.5px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(135deg, #00ffff, #00cccc, #008888);
+            border-radius: 2px;
+        }
+
+        /* Product Cards */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 24px;
+            padding: 35px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(0, 200, 200, 0.1), rgba(0, 150, 150, 0.1));
+            background-size: 300% 300%;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            animation: cardGradientMove 8s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        .product-card::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #00ffff, #00cccc, #008888, #006666, #00ffff);
+            background-size: 300% 300%;
+            border-radius: 26px;
+            opacity: 0;
+            z-index: -2;
+            animation: borderGradientMove 6s ease-in-out infinite;
+            transition: opacity 0.4s ease;
+        }
+
+        @keyframes cardGradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes borderGradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .product-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow:
+                0 25px 50px rgba(0, 255, 255, 0.25),
+                0 0 100px rgba(0, 200, 200, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border-color: rgba(0, 255, 255, 0.6);
+        }
+
+        .product-card:hover::before {
+            opacity: 1;
+        }
+
+        .product-card:hover::after {
+            opacity: 0.8;
+        }
+
+        .product-name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.9rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #00ffff;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            letter-spacing: -0.5px;
+        }
+
+        .product-status {
+            background: linear-gradient(135deg, #00cccc, #008888);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 18px;
+            animation: pulse 2s infinite;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .features-list li {
+            padding: 10px 0;
+            position: relative;
+            padding-left: 30px;
+            color: #e2e8f0;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .features-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #00ffff;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .features-section {
+            margin-bottom: 20px;
+        }
+
+        .features-section h4 {
+            color: #00ffff;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .pricing-table {
+            background: rgba(15, 15, 35, 0.6);
+            border-radius: 16px;
+            padding: 25px;
+            margin-top: 25px;
+            border: 1px solid rgba(0, 255, 255, 0.1);
+        }
+
+        .price-tier {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+        }
+
+        .price-tier:last-child {
+            border-bottom: none;
+        }
+
+        .price-tier .tier-name {
+            color: #f1f5f9;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .price-tier .tier-price {
+            color: #00ffff;
+            font-weight: 700;
+            font-size: 1.15rem;
+        }
+
+        /* Modern Buttons */
+        .neon-btn {
+            background: linear-gradient(135deg, #00cccc, #008888);
+            border: none;
+            color: #ffffff;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-transform: none;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            margin-top: 20px;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
+        }
+
+        .neon-btn:hover {
+            background: linear-gradient(135deg, #00ffff, #00aaaa);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 255, 255, 0.4);
+        }
+
+        .neon-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .neon-btn:hover::before {
+            left: 100%;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: #00ffff;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 16px;
+            background: rgba(15, 15, 35, 0.6);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 12px;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #00ffff;
+            box-shadow: 0 0 0 3px rgba(0, 255, 255, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.8);
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 80px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .disclaimer {
+            color: #00ffff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            background: rgba(0, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            max-width: 850px;
+            margin: 0 auto;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .product-card {
+                padding: 20px;
+            }
+
+            .contact-form {
+                padding: 30px 20px;
+            }
+
+            .top-banner {
+                font-size: 1rem;
+                padding: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .header p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .product-name {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a2e;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #00cccc, #008888);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #00ffff, #00aaaa);
+        }
+
+        /* Enhanced Visual Effects */
+        .glow-effect {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glow-effect::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(0, 255, 255, 0.3), transparent);
+            animation: rotate 4s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Particle System Enhancement */
+        .particle-system {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle-enhanced {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: linear-gradient(45deg, #00ffff, #ffffff);
+            border-radius: 50%;
+            animation: particleFloat 8s infinite linear;
+            box-shadow: 0 0 6px rgba(0, 255, 255, 0.8);
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Enhanced Button Effects */
+        .neon-btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .neon-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .neon-btn:hover::after {
+            left: 100%;
+        }
+
+        /* Improved Card Hover Effects */
+        .product-card {
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px) rotateX(5deg) rotateY(5deg) scale(1.02);
+            box-shadow:
+                0 30px 60px rgba(0, 255, 255, 0.3),
+                0 0 120px rgba(0, 200, 200, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        }
+
+        /* Status Badge Enhancements */
+        .product-status {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-status::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: statusShine 3s infinite;
+        }
+
+        @keyframes statusShine {
+            0% { left: -100%; }
+            50% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        /* Enhanced Grid Layout */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 35px;
+            margin-top: 40px;
+            align-items: start;
+        }
+
+        /* Responsive Grid Improvements */
+        @media (max-width: 1024px) {
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+        }
+
+        /* Loading Animation for Form */
+        .loading {
+            position: relative;
+        }
+
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin: -10px 0 0 -10px;
+            border: 2px solid transparent;
+            border-top: 2px solid #00ffff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Particle Background -->
+    <div id="particles-container"></div>
+    
+    <!-- Floating Elements -->
+    <div class="floating-elements">
+        <div class="floating-element" style="--delay: 0s; --duration: 8s;"></div>
+        <div class="floating-element" style="--delay: 2s; --duration: 12s;"></div>
+        <div class="floating-element" style="--delay: 4s; --duration: 10s;"></div>
+        <div class="floating-element" style="--delay: 6s; --duration: 14s;"></div>
+        <div class="floating-element" style="--delay: 1s; --duration: 9s;"></div>
+    </div>
+    <!-- Top Banner -->
+    <div class="top-banner">
+        🚀 SUBSCRIBE ME ON YT AND FOLLOW ME ON INSTA !!
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav class="nav-menu">
+        <div class="container">
+            <div class="nav-links">
+                <a href="#home" class="nav-link active">🏠 Home</a>
+                <a href="#premium" class="nav-link">💎 Premium Products</a>
+                <a href="#contact" class="nav-link">📞 Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="header" id="home">
+        <h1>DIOXXIS GOAT</h1>
+        <p>DM ME ON INSTA OR DISCORD FOR PAID SENSI</p>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <style type="text/css">
+          .fa-youtube
+          {
+             font-size: 70px;
+             color: cyan
+          }
+          </style>
+          <style type="text/css">
+          .fa-instagram
+          {
+             font-size: 70px;
+             color: cyan
+          }
+          </style>
+          <style type="text/css">
+          .fa-discord
+          {
+             font-size: 70px;
+             color: cyan
+          }
+          </style>
+        <a href="https://www.youtube.com/@dioxxisgoat">
+        <i class="fa-brands fa-youtube"></i>
+        </a>
+        <a href="https://www.instagram.com/dioxxisgoat/">
+        <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://discord.com/users/1276824545101217890">
+        <i class="fa-brands fa-discord"></i>
+        </a>
+       
+    </header>
+
+    <!-- SENSI -->
+    <section class="section" id="premium">
+        <div class="container">
+            <h2 class="section-title">OPTIMIZATION</h2>
+            <div class="products-grid">
+                <div class="product-card fade-in">
+                    <div class="product-status">🔥 NOW AVAILABLE</div>
+                    <h3 class="product-name">BASIC</h3>
+                    <div class="features-section">
+                        <h4>🎯 FEATURES</h4>
+                        <ul class="features-list">
+                            <li>FPS BOOST</li>
+                            <li>ALL DONE BY ME VIA ULTRAVIEWER</li>
+                            <li>Smooth & Stable Performance</li>
+                            <li>24/7 SUPPORT</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-table">
+                        <div class="price-tier">
+                            <span class="tier-name">PRICE</span>
+                            <span class="tier-price">₹1,000</span>
+                        </div>
+                    </div>
+                <div class="product-card fade-in">
+                    <div class="product-status">🔥 NOW AVAILABLE</div>
+                    <h3 class="product-name">PREMIUM</h3>
+                    <div class="features-section">
+                        <h4>🎯 Features</h4>
+                        <ul class="features-list">
+                            <li>PROVIDE SMOOTHNESS WITH RECORDING</li>
+                            <li>+BASIC SENSI INCLUDE IN THIS PACK</li>
+                            <li>OUR CUSTOM OS</li>
+                            <li>HYBRID FEEL</li>
+                            <li>EMULATOR SETTING FOR MAX BOOST</li>
+                        </ul>
+                        <h4>⚡ Extra</h4>
+                        <ul class="features-list">
+                            <li>OUR PREMIUM LIFE TIME SUPPORT</li>
+                            <li>IF NOT WORK THAN THAN YOU WILL REFUND IT</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-table">
+                        <div class="price-tier">
+                            <span class="tier-name">PRICE</span>
+                            <span class="tier-price">₹3,000</span>
+                        </div>
+                    </div>
+                    <button class="neon-btn">GET OPTMIZATION</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SENSI  -->
+    <section class="section" id="SENSI">
+                <div class="product-card fade-in">
+                    <div class="product-status">🔧 PREMIUM</div>
+                    <h3 class="product-name">LEGEND</h3>
+                    <div class="features-section">
+                        <h4>🎯 Features</h4>
+                        <ul class="features-list">
+                            <li>GOAT REGEDIT</li>
+                            <li>Feel Like Drag Aimbot </li>
+                            <li>NO Recoil</li>
+                            <li>Aimshake Fix</li>
+                        </ul>
+                        <h4>⚡ Extra</h4>
+                        <ul class="features-list">
+                            <li>WORK ACCORDING TO YOUR PC</li>
+                            <li>NO GLITCHES</li>
+                            <li>INCLUDE WITH OPTMIZATION</li>
+                            <li>NO ISSUES</li>
+                        </ul>
+                    </div>
+                        <div class="price-tier">
+                            <span class="tier-name">PERMANENT</span>
+                            <span class="tier-price">₹2,500</span>
+                        </div>
+                    </div>
+                    <button class="neon-btn">Get PREMIUM</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    </section>
+    <!-- Contact/Booking Form Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact & Booking</h2>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="discord">Discord Username</label>
+                    <input type="text" id="discord" name="discord" placeholder="username#1234">
+                </div>
+                
+                <div class="form-group">
+                    <label for="service">Service Interest</label>
+                    <select id="service" name="service" required>
+                        <option value="">Select a service</option>
+                        <option value="SENSI">BASIC SENSI</option>
+                        <option value="SENSI">PREMIUM SENSI</option>
+                        <option value="OPTIMIZATION">BASIC OPTMIZATION</option>
+                        <option value="OPTMIZATION">PREMIUM OPTMIZATION</option>
+                        <option value="ALL IN ONE ">GOATUS</option>
+                        <option value="EDITING PURPOSE">PAID EDITS</option>
+                        <option value="DEVELOPING PURPOSE">SERVER CLONE IN DC OR OTHER DEVELOPING PURPOSE</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Project Details</label>
+                    <textarea id="message" name="message" placeholder="Tell us about your requirements... For serious buyers only!"></textarea>
+                </div>
+                
+                <button type="submit" class="neon-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="disclaimer">
+                ⚠️ IMPORTANT: This website showcases gaming tool interfaces for demonstration purposes. All products shown are for educational and UI design showcase only. No actual gaming cheats, hacks, or tools are sold through this platform. This is a portfolio demonstration of web design capabilities. ⚠️
+            </div>
+            <p style="margin-top: 20px; color: #666;">
+                © 2025 DioxXis UI Showcase. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Enhanced JavaScript for better functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Discord webhook integration
+            const DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/1402345672451031182/7O9r7Xxv5hmPHMPwT_oTqavgvCHssbDoBJMFbkXnWHlOGNpDDVO0x3xt-oxT1OehIL8G';
+            
+            // Form submission handler with Discord webhook
+            const contactForm = document.getElementById('contactForm');
+            contactForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const formData = new FormData(contactForm);
+                const name = formData.get('name');
+                const email = formData.get('email');
+                const discord = formData.get('discord');
+                const service = formData.get('service');
+                const budget = formData.get('budget');
+                const message = formData.get('message');
+                
+                // Validate required fields
+                if (!name || !email || !service) {
+                    alert('Please fill in all required fields (Name, Email, Service).');
+                    return;
+                }
+                
+                // Get service name from select option
+                const serviceSelect = document.getElementById('service');
+                const serviceName = serviceSelect.options[serviceSelect.selectedIndex].text;
+                
+                // Get budget name from select option
+                const budgetSelect = document.getElementById('budget');
+// Initialize Navigation System
+            initializeNavigation();
+                const budgetName = budget ? budgetSelect.options[budgetSelect.selectedIndex].text : 'Not specified';
+                
+                // Create Discord embed message
+                const embed = {
+                    title: "🎮 New DIOXXIS Booking Request",
+                    color: 0x00FFFF, // Cyan color
+                    timestamp: new Date().toISOString(),
+                    fields: [
+                        {
+                            name: "👤 Customer Details",
+                            value: `**Name:** ${name}\n**Email:** ${email}\n**Discord:** ${discord || 'Not provided'}`,
+                            inline: false
+                        },
+                        {
+                            name: "🎯 Service Interest",
+                            value: `**Service:** ${serviceName}\n**Budget:** ${budgetName}`,
+                            inline: false
+                        },
+                        {
+                            name: "💬 Message",
+                            value: message || 'No additional message provided',
+                            inline: false
+                        }
+                    ],
+                    footer: {
+                        text: "DIOXXIS - Booking System",
+                        icon_url: "https://cdn.discordapp.com/attachments/1360288917420769442/1385321560528916500/WEefGMs.png?ex=689443fe&is=6892f27e&hm=eb8d123181b9b96c98a1dbb062706dfa5a212f7b8fb65edf7abf45793243f33a"
+                    }
+                };
+                
+                // Send to Discord webhook
+                try {
+                    const response = await fetch(DISCORD_WEBHOOK_URL, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            embeds: [embed],
+                            username: "DIOXXIS Booking Bot",
+                            avatar_url: "https://cdn.discordapp.com/attachments/1360288917420769442/1385321560528916500/WEefGMs.png?ex=689443fe&is=6892f27e&hm=eb8d123181b9b96c98a1dbb062706dfa5a212f7b8fb65edf7abf45793243f33a"
+                        })
+                    });
+                    
+                    if (response.ok) {
+                        // Show success message
+                        alert(`🎉 Thank you ${name}! Your booking request for ${serviceName} has been sent successfully. We'll contact you soon!`);
+                        contactForm.reset();
+                        
+                        // Add visual feedback
+                        const submitBtn = contactForm.querySelector('.neon-btn');
+                        const originalText = submitBtn.textContent;
+                        submitBtn.textContent = '✅ Sent Successfully!';
+                        submitBtn.style.background = 'linear-gradient(135deg, #00ff00, #00cc00)';
+                        
+                        setTimeout(() => {
+                            submitBtn.textContent = originalText;
+                            submitBtn.style.background = 'linear-gradient(135deg, #00cccc, #008888)';
+                        }, 3000);
+                    } else {
+                        throw new Error('Failed to send message');
+                    }
+                } catch (error) {
+                    console.error('Error sending to Discord:', error);
+                    alert('❌ There was an error sending your message. Please try again or contact us directly.');
+                }
+            });
+
+            // Add click handlers for all neon buttons
+            const neonButtons = document.querySelectorAll('.neon-btn');
+            neonButtons.forEach(button => {
+                if (button.textContent.includes('Get') || button.textContent.includes('DM')) {
+                    button.addEventListener('click', function() {
+                        const productName = this.closest('.product-card').querySelector('.product-name').textContent;
+                        alert(`Interest in ${productName} noted! This is a UI showcase - no actual purchase functionality is available. Contact form below for inquiries.`);
+                    });
+                }
+            });
+
+            // Intersection Observer for smooth animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all product cards for animations
+            const productCards = document.querySelectorAll('.product-card');
+            productCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+
+            // Enhanced cursor effect
+            let cursor = null;
+            document.addEventListener('mousemove', function(e) {
+                if (!cursor) {
+                    cursor = document.createElement('div');
+                    cursor.className = 'cursor';
+                    cursor.style.cssText = `
+                        position: fixed;
+                        width: 20px;
+                        height: 20px;
+                        background: radial-gradient(circle, rgba(0,255,255,0.8) 0%, transparent 70%);
+                        border-radius: 50%;
+                        pointer-events: none;
+                        z-index: 9999;
+                        mix-blend-mode: difference;
+                        transition: transform 0.1s ease;
+                    `;
+                    document.body.appendChild(cursor);
+                }
+                
+                cursor.style.left = e.clientX - 10 + 'px';
+                cursor.style.top = e.clientY - 10 + 'px';
+            });
+
+            // Add hover effects for interactive elements
+            document.querySelectorAll('.neon-btn, .product-card').forEach(element => {
+                element.addEventListener('mouseenter', function() {
+                    if (cursor) {
+                        cursor.style.transform = 'scale(1.5)';
+                        cursor.style.background = 'radial-gradient(circle, rgba(0,255,255,0.8) 0%, transparent 70%)';
+                    }
+                });
+                
+                element.addEventListener('mouseleave', function() {
+                    if (cursor) {
+                        cursor.style.transform = 'scale(1)';
+                        cursor.style.background = 'radial-gradient(circle, rgba(0,255,255,0.8) 0%, transparent 70%)';
+                    }
+                });
+            });
+
+            // Enhanced interactive effects
+            const allProductCards = document.querySelectorAll('.product-card');
+            allProductCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    // Create ripple effect
+                    const ripple = document.createElement('div');
+                    ripple.style.cssText = `
+                        position: absolute;
+                        border-radius: 50%;
+                        background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+                        transform: scale(0);
+                        animation: ripple 0.6s linear;
+                        pointer-events: none;
+                        z-index: 1;
+                    `;
+                    
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    ripple.style.width = ripple.style.height = size + 'px';
+                    ripple.style.left = '50%';
+                    ripple.style.top = '50%';
+                    ripple.style.transform = 'translate(-50%, -50%) scale(0)';
+                    
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        if (ripple.parentNode) {
+                            ripple.parentNode.removeChild(ripple);
+                        }
+                    }, 600);
+                });
+            });
+
+            // Add ripple animation keyframes
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes ripple {
+                    to {
+                        transform: translate(-50%, -50%) scale(2);
+                        opacity: 0;
+                    }
+                }
+                
+                @keyframes float3D {
+                    0%, 100% {
+                        transform: translateY(0px) rotateX(0deg) rotateY(0deg);
+                    }
+                    33% {
+                        transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+                    }
+                    66% {
+                        transform: translateY(5px) rotateX(-3deg) rotateY(-3deg);
+                    }
+                }
+                
+                .product-card:hover {
+                    animation: float3D 2s ease-in-out infinite;
+                }
+            `;
+            document.head.appendChild(style);
+
+            // Dynamic background color shifts with sophisticated theme
+            let colorIndex = 0;
+            const colors = [
+                'linear-gradient(135deg, #0a1a1a 0%, #0f2a2a 25%, #1a3a3a 50%, #0f2f2f 75%, #0a1f1f 100%)',
+                'linear-gradient(135deg, #0a1f1f 0%, #0f2f2f 25%, #1a3f3f 50%, #0f3a3a 75%, #0a2a2a 100%)',
+                'linear-gradient(135deg, #0a2a2a 0%, #0f3a3a 25%, #1a4a4a 50%, #0f4040 75%, #0a3030 100%)'
+            ];
+            
+            setInterval(() => {
+                colorIndex = (colorIndex + 1) % colors.length;
+                document.body.style.background = colors[colorIndex];
+            }, 10000);
+
+            // Enhanced particle system
+            function createEnhancedParticles() {
+                const particleContainer = document.createElement('div');
+                particleContainer.className = 'particle-system';
+                document.body.appendChild(particleContainer);
+
+                function createParticle() {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle-enhanced';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.animationDelay = Math.random() * 8 + 's';
+                    particle.style.animationDuration = (Math.random() * 10 + 8) + 's';
+                    particleContainer.appendChild(particle);
+
+                    setTimeout(() => {
+                        if (particle.parentNode) {
+                            particle.parentNode.removeChild(particle);
+                        }
+                    }, 18000);
+                }
+
+                // Create particles periodically
+                setInterval(createParticle, 300);
+            }
+
+            createEnhancedParticles();
+
+            // Add glow effects to product cards
+            const allCards = document.querySelectorAll('.product-card');
+            allCards.forEach(card => {
+                card.classList.add('glow-effect');
+            });
+
+            // Enhanced form submission with loading state
+            const originalFormHandler = contactForm.querySelector('.neon-btn');
+            contactForm.addEventListener('submit', function(e) {
+                const submitBtn = this.querySelector('.neon-btn');
+                submitBtn.classList.add('loading');
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending...';
+            });
+
+            // Add smooth scroll behavior
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Add typing effect to header
+            function typeWriter(element, text, speed = 100) {
+                let i = 0;
+                element.innerHTML = '';
+                function type() {
+                    if (i < text.length) {
+                        element.innerHTML += text.charAt(i);
+                        i++;
+                        setTimeout(type, speed);
+                    }
+                }
+                type();
+            }
+
+            // Enhanced card interactions
+            allCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-15px) rotateX(5deg) rotateY(5deg) scale(1.02)';
+                    this.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+                });
+
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) rotateX(0) rotateY(0) scale(1)';
+                });
+            });
+
+            // Add parallax effect to floating elements
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const parallax = document.querySelectorAll('.floating-element');
+                const speed = 0.5;
+
+                parallax.forEach(element => {
+                    const yPos = -(scrolled * speed);
+                    element.style.transform = `translateY(${yPos}px)`;
+                });
+            });
+
+            // Enhanced button click effects
+            document.querySelectorAll('.neon-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    // Create ripple effect
+                    const ripple = document.createElement('span');
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+                    
+                    ripple.style.cssText = `
+                        position: absolute;
+                        width: ${size}px;
+                        height: ${size}px;
+                        left: ${x}px;
+                        top: ${y}px;
+                        background: radial-gradient(circle, rgba(255,255,255,0.6) 0%, transparent 70%);
+                        border-radius: 50%;
+                        transform: scale(0);
+                        animation: rippleEffect 0.6s linear;
+                        pointer-events: none;
+                    `;
+                    
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+
+            // Add ripple effect keyframes
+            const rippleStyle = document.createElement('style');
+            rippleStyle.textContent = `
+                @keyframes rippleEffect {
+                    to {
+                        transform: scale(2);
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(rippleStyle);
+        });
+    </script>
+</body>
+</html>
